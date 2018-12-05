@@ -10,9 +10,11 @@ jobs:
       Debug_x86:
         buildPlatform: 'x86'
         buildConfiguration: 'Debug'
-      Release_x64:
+        optimize: 'false'
+      Release_x64_noopt:
         buildPlatform: 'x64'
         buildConfiguration: 'Release'
+        optimize: 'false'
 
   steps:
   - task: powershell@2
@@ -41,3 +43,4 @@ jobs:
       vsVersion: 15.0
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
+      msbuildArgs: '/p:Optimize=$(optimize)'
